@@ -2,6 +2,8 @@ public class Teste {
     public static void main(String[] args) {
 
         Ano ano1 = new Ano(2023);
+
+        // Acessa o array de meses do objeto ano1 e atribui um novo objeto Mes na posição desejada
         ano1.getMeses()[0] = new Mes("Janeiro", 24.5);
         ano1.getMeses()[1] = new Mes("Fevereiro", 23.6);
         ano1.getMeses()[2] = new Mes ("Março", 26.7);
@@ -29,7 +31,6 @@ public class Teste {
         ano2.getMeses()[10] = new Mes("Novembro", 23.6);
         ano2.getMeses()[11] = new Mes("Dezembro", 25.9);
 
-
         Ano ano3 = new Ano(2025);
         ano3.getMeses()[0] = new Mes("Janeiro", 23.9);
         ano3.getMeses()[1] = new Mes("Fevereiro", 22.8);
@@ -44,42 +45,47 @@ public class Teste {
         ano3.getMeses()[10] = new Mes("Novembro", 22.4);
         ano3.getMeses()[11] = new Mes("Dezembro", 24.3);
 
-
         //Previsoes para os proximos 3 anos
+        //Array para armazenar os anos e poder calcular
+        Ano [] anosBase= new Ano[]{ano1, ano2, ano3};
 
-        Ano anoNovo = ano1;
-        for(int i = 1; i <= 3; i++){
-            Ano novo = anoNovo + 1;
 
-        }
+        for(int j = 0; j < 3; j++) {
+            Ano anobase = anosBase[j];
+            int proxAno = anobase.getValor() + 3;
+            Ano novoAno = new Ano(proxAno);
+            System.out.println("Previsão para o ano de " + novoAno.getValor());
 
-        for(int i = 0; i < 12; i++){
+            for(int i = 0; i < 12; i++){
+                double anterior, atual, sucessor;
 
-            double anterior, atual, sucessor;
+                if(i == 0 ){
+                    atual = anobase.getMeses()[0].getTemperatura();
+                    sucessor = anobase.getMeses()[1].getTemperatura();
+                    anterior = anobase.getMeses()[0].getTemperatura();
 
-            if(i == 0 ){
-                atual = ano1.getMeses()[0].getTemperatura();
-                sucessor = ano1.getMeses()[1].getTemperatura();
-                anterior = ano1.getMeses()[0].getTemperatura();
-
-            }else if(i == 11){
-                atual = ano1.getMeses()[11].getTemperatura();
-                sucessor = ano1.getMeses()[11].getTemperatura();
-                anterior = ano1.getMeses()[10].getTemperatura();
-            } else{
-                atual = ano1.getMeses()[i].getTemperatura();
-                sucessor = ano1.getMeses()[i + 1].getTemperatura();
-                anterior = ano1.getMeses()[i - 1].getTemperatura();
+                }else if(i == 11){
+                    atual = anobase.getMeses()[11].getTemperatura();
+                    sucessor = anobase.getMeses()[11].getTemperatura();
+                    anterior = anobase.getMeses()[10].getTemperatura();
+                } else{
+                    atual = anobase.getMeses()[i].getTemperatura();
+                    sucessor = anobase.getMeses()[i + 1].getTemperatura();
+                    anterior = anobase.getMeses()[i - 1].getTemperatura();
 
                 }
-            double media = (atual + anterior + sucessor) / 3;
-            double previsao = media + (0.13 * 3);
+                double media = (atual + anterior + sucessor) / 3;
+                double previsao = media + (0.13 * 3);
+
+                String[] nomesMeses = {
+                        "Janeiro", "Fevereiro", "Março", "Abril",
+                        "Maio", "Junho", "Julho", "Agosto",
+                        "Setembro", "Outubro", "Novembro", "Dezembro"
+                };
+
+                    System.out.println(nomesMeses[i] + " - "+ previsao);
 
             }
         }
+        }}
 
-
-
-
-
-    }
