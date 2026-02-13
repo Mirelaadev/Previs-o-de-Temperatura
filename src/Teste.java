@@ -49,12 +49,15 @@ public class Teste {
         //Array para armazenar os anos e poder calcular
         Ano [] anosBase= new Ano[]{ano1, ano2, ano3};
 
-
+        //Percorrer o array de anos base e calcula o próximo ano
         for(int j = 0; j < 3; j++) {
+            // Armazena o ano base atual
             Ano anobase = anosBase[j];
             int proxAno = anobase.getValor() + 3;
+
             Ano novoAno = new Ano(proxAno);
-            System.out.println("Previsão para o ano de " + novoAno.getValor());
+            System.out.println("\n------------------------------------------\n");
+            System.out.println("PREVISÃO PARA O ANO DE " + novoAno.getValor());
 
             for(int i = 0; i < 12; i++){
                 double anterior, atual, sucessor;
@@ -82,8 +85,8 @@ public class Teste {
                         "Maio", "Junho", "Julho", "Agosto",
                         "Setembro", "Outubro", "Novembro", "Dezembro"
                 };
+                    System.out.printf(nomesMeses[i] + " - %.2f \n", previsao);
 
-                    System.out.println(nomesMeses[i] + " - "+ previsao);
 
             }
         }
