@@ -55,9 +55,9 @@ public class Teste {
             Ano anobase = anosBase[j];
             int proxAno = anobase.getValor() + 3;
 
-            Ano novoAno = new Ano(proxAno);
+           // Ano novoAno = new Ano(proxAno);
             System.out.println("\n------------------------------------------\n");
-            System.out.println("PREVISÃO PARA O ANO DE " + novoAno.getValor());
+            System.out.println("PREVISÃO PARA O ANO DE " + proxAno);
 
             for(int i = 0; i < 12; i++){
                 double anterior, atual, sucessor;
