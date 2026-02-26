@@ -60,25 +60,23 @@ public class Teste {
             System.out.println("PREVISÃO PARA O ANO DE " + novoAno.getValor());
 
             for(int i = 0; i < 12; i++){
-                double anterior, atual, sucessor;
+                double soma;
 
                 if(i == 0 ){
-                    atual = anobase.getMeses()[0].getTemperatura();
-                    sucessor = anobase.getMeses()[1].getTemperatura();
-                    anterior = anobase.getMeses()[0].getTemperatura();
+                    soma = (anobase.getMeses()[0].getTemperatura()*2) + anobase.getMeses()[1].getTemperatura();
 
                 }else if(i == 11){
-                    atual = anobase.getMeses()[11].getTemperatura();
-                    sucessor = anobase.getMeses()[11].getTemperatura();
-                    anterior = anobase.getMeses()[10].getTemperatura();
+
+                    soma = (anobase.getMeses()[11].getTemperatura()*2) + anobase.getMeses()[10].getTemperatura();
+
                 } else{
-                    atual = anobase.getMeses()[i].getTemperatura();
-                    sucessor = anobase.getMeses()[i + 1].getTemperatura();
-                    anterior = anobase.getMeses()[i - 1].getTemperatura();
+
+                    soma = anobase.getMeses()[i].getTemperatura() + anobase.getMeses()[i + 1].getTemperatura()
+                            + anobase.getMeses()[i + 1].getTemperatura();
 
                 }
-                double media = (atual + anterior + sucessor) / 3;
-                double previsao = media + (0.13 * 3);
+
+                double previsao =  (soma / 3) + (0.13 * 3);
 
                 String[] nomesMeses = {
                         "Janeiro", "Fevereiro", "Março", "Abril",
